@@ -1,0 +1,6 @@
+# robots.txt for Sanzin K-Store
+# Allows all crawlers. Replace the Sitemap URL with your published site URL.
+User-agent: *
+Disallow:
+
+Sitemap: https://MeMeZ0106.github.io/sanzin-landing/sitemap.xml
