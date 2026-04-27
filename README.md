@@ -4,49 +4,47 @@ This repository contains a simple static landing page. The project includes basi
 
 Quick steps to publish to GitHub Pages and register with Google Search Console
 
-1. Create a GitHub repository and push this code
+1. Repository pushed to GitHub
 
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-# create repo on GitHub (use the website or gh CLI), then:
-git remote add origin https://github.com/YOUR_USERNAME/REPO_NAME.git
-git branch -M main
-git push -u origin main
-```
+- Your repository is at: `https://github.com/MeMeZ0106/sanzin_landing`
+- The code has been committed and pushed to the `main` branch
 
 2. Automatic deployment (GitHub Actions)
 
 - This repo includes `.github/workflows/deploy.yml` which will deploy the repository root to the `gh-pages` branch using the `peaceiris/actions-gh-pages` action whenever you push to `main`.
 - Make sure Actions are enabled in your repository settings. After the first successful run, your site will be available at:
-  `https://YOUR_USERNAME.github.io/REPO_NAME/` (replace placeholders)
+  `https://MeMeZ0106.github.io/sanzin_landing/`
 
-3. Update placeholders
+3. Update verification code
 
-- Open `index.html` and replace `https://YOUR_DOMAIN_OR_USERNAME.github.io/REPO_NAME/` in the `og:url`, `canonical`, and JSON-LD with your actual site URL.
-- Replace `REPLACE_WITH_GOOGLE_VERIFICATION_CODE` in the `google-site-verification` meta tag with the verification string Google gives you (see next step).
+- Open `index.html` and find the line: `<meta name="google-site-verification" content="REPLACE_WITH_GOOGLE_VERIFICATION_CODE">`
+- Replace `REPLACE_WITH_GOOGLE_VERIFICATION_CODE` with the verification string Google gives you (see next step).
 
 4. Register and verify in Google Search Console
 
-1) Go to https://search.google.com/search-console and add a new property using the "URL prefix" option.
-2) Choose HTML tag verification and copy the provided meta tag value (a string). Replace the placeholder in `index.html` (`google-site-verification`).
-3) Commit and push the change to `main`, wait for your site to be deployed, then click "Verify" in Search Console.
-
-Alternative verification: upload the verification file or use DNS verification for a custom domain.
+1) Go to https://search.google.com/search-console and add a new property
+2) Choose **URL prefix** and paste: `https://MeMeZ0106.github.io/sanzin_landing/`
+3) Choose **HTML tag** verification and copy the provided `content` value
+4) Open `index.html`, find the `google-site-verification` meta tag, and replace `REPLACE_WITH_GOOGLE_VERIFICATION_CODE` with the code from step 3
+5) Commit and push the change to `main`:
+   ```bash
+   git add index.html
+   git commit -m "Add Google Search Console verification"
+   git push
+   ```
+6) Wait ~30 seconds for deployment, then click **Verify** in Search Console
 
 5. Submit your sitemap
 
-- In Search Console, open the property, go to "Sitemaps" and add:
-  `https://YOUR_DOMAIN_OR_USERNAME.github.io/REPO_NAME/sitemap.xml`
+- In Search Console, open your property, go to **Sitemaps** (left menu)
+- Click **Add/Test sitemaps** and enter: `https://MeMeZ0106.github.io/sanzin_landing/sitemap.xml`
+- Click **Submit**
 
-6. Check `robots.txt`
+6. Verify robots.txt and SEO
 
-- Visit `https://YOUR_DOMAIN_OR_USERNAME.github.io/REPO_NAME/robots.txt` and confirm it does not contain `Disallow: /` or any `noindex` directives. The included `robots.txt` allows all crawlers and points to the sitemap.
-
-7. Verify indexing meta tag
-
-- Make sure `index.html` does NOT include a `meta name="robots" content="noindex"` tag. This project explicitly sets `meta name="robots" content="index, follow"`.
+- Visit `https://MeMeZ0106.github.io/sanzin_landing/robots.txt` → confirm it shows `User-agent: *` with no `Disallow` rules
+- Visit `https://MeMeZ0106.github.io/sanzin_landing/` and check the page source → confirm `<meta name="robots" content="index, follow">`
+- Your canonical URL, OG tags, and JSON-LD are set and ready for indexing
 
 Notes and next steps
 

@@ -3,4 +3,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://MeMeZ0106.github.io/sanzin-landing/sitemap.xml
+Sitemap: https://MeMeZ0106.github.io/sanzin_landing/sitemap.xml
